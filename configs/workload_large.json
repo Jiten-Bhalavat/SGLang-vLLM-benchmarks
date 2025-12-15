@@ -1,0 +1,35 @@
+{
+    "name": "large_workload",
+    "description": "Large benchmark workload for comprehensive stress testing",
+    "prompts": [
+        "Write a detailed essay on the impact of artificial intelligence on modern society, covering both benefits and potential risks.",
+        "Explain the mathematical foundations of deep learning, including gradient descent and loss functions.",
+        "Describe the history and evolution of cloud computing from mainframes to modern distributed systems.",
+        "What are the key principles of sustainable development and how can they be implemented in urban planning?",
+        "Explain how cryptographic hash functions work and their applications in cybersecurity.",
+        "Discuss the ethical considerations in genetic engineering and CRISPR technology.",
+        "How do modern search engines work? Explain the indexing and ranking algorithms.",
+        "Describe the physics of black holes and their role in our understanding of the universe.",
+        "What are microservices architecture and how do they differ from monolithic applications?",
+        "Explain the mechanisms of vaccine development and the process of clinical trials.",
+        "How does quantum entanglement work and what are its potential applications?",
+        "Describe the economic theories behind monetary policy and central banking.",
+        "What is natural language processing and how do large language models understand text?",
+        "Explain the carbon cycle and its importance in climate regulation.",
+        "How do autonomous vehicles navigate and make decisions in real-time?"
+    ],
+    "num_requests": 100,
+    "max_tokens": 256,
+    "concurrency": 10,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "timeout_seconds": 600,
+    "warmup_requests": 10,
+    "metrics": {
+        "measure_ttft": true,
+        "measure_throughput": true,
+        "measure_latency": true,
+        "percentiles": [50, 90, 95, 99]
+    }
+}
+

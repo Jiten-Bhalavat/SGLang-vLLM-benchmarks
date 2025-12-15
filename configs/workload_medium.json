@@ -1,0 +1,30 @@
+{
+    "name": "medium_workload",
+    "description": "Medium benchmark workload for standard evaluation",
+    "prompts": [
+        "Explain the theory of relativity and its implications for modern physics.",
+        "What are the key differences between supervised and unsupervised learning?",
+        "Describe the process of photosynthesis in detail, including the light and dark reactions.",
+        "How do neural networks learn from data? Explain backpropagation.",
+        "What is blockchain technology and how does it ensure data integrity?",
+        "Explain the concept of climate change and its potential impacts on ecosystems.",
+        "How does the immune system protect the body from pathogens?",
+        "What are the fundamental principles of object-oriented programming?",
+        "Describe the structure and function of DNA in living organisms.",
+        "How do economists measure the health of a national economy?"
+    ],
+    "num_requests": 50,
+    "max_tokens": 128,
+    "concurrency": 5,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "timeout_seconds": 300,
+    "warmup_requests": 5,
+    "metrics": {
+        "measure_ttft": true,
+        "measure_throughput": true,
+        "measure_latency": true,
+        "percentiles": [50, 90, 95, 99]
+    }
+}
+

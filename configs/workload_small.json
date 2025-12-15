@@ -1,0 +1,25 @@
+{
+    "name": "small_workload",
+    "description": "Small benchmark workload for quick testing",
+    "prompts": [
+        "Explain quantum computing in simple terms.",
+        "What is machine learning and how does it work?",
+        "Describe the water cycle in nature.",
+        "What are the benefits of exercise?",
+        "How does photosynthesis work?"
+    ],
+    "num_requests": 10,
+    "max_tokens": 64,
+    "concurrency": 2,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "timeout_seconds": 120,
+    "warmup_requests": 2,
+    "metrics": {
+        "measure_ttft": true,
+        "measure_throughput": true,
+        "measure_latency": true,
+        "percentiles": [50, 90, 95, 99]
+    }
+}
+
