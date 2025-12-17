@@ -28,11 +28,14 @@ RUN python -m pip install --upgrade pip setuptools wheel
 # Install PyTorch with CUDA support
 RUN pip install torch==2.1.2 --index-url https://download.pytorch.org/whl/cu121
 
-# Install SGLang with all dependencies
-RUN pip install "sglang[all]>=0.3.0"
+# Install additional dependencies from PyPI first
+RUN pip install transformers accelerate huggingface_hub
 
-# Install additional dependencies
-RUN pip install transformers accelerate huggingface_hub flashinfer -i https://flashinfer.ai/whl/cu121/torch2.1/
+# Install flashinfer from special index
+RUN pip install flashinfer -i https://flashinfer.ai/whl/cu121/torch2.1/
+
+# Install SGLang
+RUN pip install "sglang[all]>=0.3.0"
 
 # Create app directory
 WORKDIR /app
@@ -65,4 +68,6 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=120s --retries=3 \
 
 # Default command
 CMD ["/bin/bash", "/app/start_server.sh"]
+
+
 
