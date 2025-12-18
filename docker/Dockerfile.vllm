@@ -32,7 +32,7 @@ RUN pip install torch==2.1.2 --index-url https://download.pytorch.org/whl/cu121
 RUN pip install vllm==0.6.3.post1
 
 # Install additional dependencies
-RUN pip install transformers accelerate huggingface_hub
+RUN pip install transformers accelerate huggingface_hub pyairports
 
 # Create app directory
 WORKDIR /app
@@ -52,8 +52,7 @@ python -m vllm.entrypoints.openai.api_server \\\n\
     --model $MODEL \\\n\
     --host 0.0.0.0 \\\n\
     --port 8000 \\\n\
-    --trust-remote-code \\\n\
-    ${EXTRA_ARGS:-""}\n\
+    --trust-remote-code\n\
 ' > /app/start_server.sh && chmod +x /app/start_server.sh
 
 # Expose port
@@ -65,4 +64,6 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=120s --retries=3 \
 
 # Default command
 CMD ["/bin/bash", "/app/start_server.sh"]
+
+
 

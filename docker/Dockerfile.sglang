@@ -16,6 +16,8 @@ RUN apt-get update && apt-get install -y \
     git \
     wget \
     curl \
+    libnuma-dev \
+    libnuma1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Create symbolic links for python
@@ -55,8 +57,7 @@ python -m sglang.launch_server \\\n\
     --model-path $MODEL \\\n\
     --host 0.0.0.0 \\\n\
     --port 30000 \\\n\
-    --trust-remote-code \\\n\
-    ${EXTRA_ARGS:-""}\n\
+    --trust-remote-code\n\
 ' > /app/start_server.sh && chmod +x /app/start_server.sh
 
 # Expose port
@@ -64,7 +65,7 @@ EXPOSE 30000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=30s --start-period=120s --retries=3 \
-    CMD curl -f http://localhost:30000/health || exit 1
+    CMD curl -f http://localhost:30000/get_model_info || exit 1
 
 # Default command
 CMD ["/bin/bash", "/app/start_server.sh"]
