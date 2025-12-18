@@ -186,3 +186,5 @@ echo "  1. Review results in $RESULTS_DIR/"
 echo "  2. Run visualization notebook: notebooks/benchmark_visualization.ipynb"
 echo "  3. Download results for report: scp -r results/ local-machine:path/"
 
+
+

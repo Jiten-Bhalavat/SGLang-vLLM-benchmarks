@@ -195,7 +195,7 @@ run_sglang_benchmark() {
     echo "Waiting for SGLang server to load model (this may take a few minutes)..."
     local max_wait=600  # 10 minutes max
     local waited=0
-    while ! curl -s http://localhost:$SGLANG_PORT/health > /dev/null 2>&1; do
+    while ! curl -s http://localhost:$SGLANG_PORT/get_model_info > /dev/null 2>&1; do
         sleep 10
         waited=$((waited + 10))
         echo "  Waited ${waited}s..."
@@ -271,7 +271,7 @@ mkdir -p $RESULTS_DIR/vllm $RESULTS_DIR/sglang
 
 # Install Python dependencies
 print_header "Installing Python Dependencies"
-pip install -q -r requirements.txt
+pip3 install --break-system-packages -q -r requirements.txt
 print_status "Dependencies installed"
 
 # Track timing
@@ -326,4 +326,6 @@ echo "  2. Run visualization notebook"
 echo "  3. Complete your report"
 echo ""
 echo -e "${GREEN}Don't forget to TERMINATE your EC2 instance to avoid charges!${NC}"
+
+
 
